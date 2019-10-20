@@ -1,12 +1,172 @@
-﻿<Window x:Class="NavigatorRV.MainWindow"
+﻿<Window x:Class="Navi.MainWindow" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NavigatorRV"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Navi" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="603" Width="1029"
+        ShowInTaskbar="True" Closing="Window_Closing" Background="#FFD6D6D6">
+
+    <DockPanel Name="Componer">
+        <Menu DockPanel.Dock="Top" Height ="Auto" Name="MyMenu" Background="#FFD6D6D6" FontFamily="Segoe UI Light">
+            <MenuItem Header="_File" IsTabStop="False">
+                <MenuItem Header="_Settings" Click="MenuItem_Click_3"/>
+                <MenuItem Header="_Exit" Click="MenuItem_Click" />
+            </MenuItem>
+            <!-- <MenuItem Header="E_dit"  IsTabStop="False">
+                <MenuItem Header="_Copy"/>
+                <MenuItem Header="C_ut"/>
+                <MenuItem Header="_Delete"/>
+            </MenuItem> -->
+            <MenuItem Header="_About" IsTabStop="False" >
+                <MenuItem Header="_About program" Click="MenuItem_Click_1" />
+                <MenuItem Header="Hot_keys" Click="MenuItem_Click_4" />
+                <MenuItem Header="A_bout author" Click="MenuItem_Click_2" />
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Name="UpperTray"  DockPanel.Dock="Top" Height="Auto" Background="#FFD6D6D6">
+            <ToolBar Name="ActionsToolBar"  Height="26" Width ="{Binding ElementName=UpperTray, Path=ActualWidth}" Background="#FFD6D6D6" Margin="0,0,0.4,0">
+
+                <Button Name ="AddFile" Focusable="False" Click="AddFile_Click" ToolTip="Add new file">
+                    <Image  Source="/Navi;component/Images/1358479218_file_add.png"  />
+                </Button>
+                <Button Name="AddFolder" Focusable="False" Click="AddFolder_Click" ToolTip="Add new folder">
+                    <Image Name="FolderImage" Source="/Navi;component/Images/folder.png" />
+                </Button>
+                <Button Name="RenameFile" Focusable="False"  ToolTip="Rename File" Click="RenameFile_Click">
+                    <Image Name="RenameFileImage" Source="/Navi;component/Images/1358479304_file_edit.png" />
+                </Button>
+                <Button Name="CopyFiles" Focusable="False" Click="CopyFiles_Click" ToolTip="Copy files" >
+                    <Image  Source="/Navi;component/Images/add_4457.png"  />
+                </Button>
+                <Button Name ="DeleteFile" Focusable="False" ToolTip="Delete files">
+                    <Image  Source="/Navi;component/Images/1358479444_file_delete.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="Delete selected files" />
+                </Button>
+
+
+            </ToolBar>
+        </ToolBarTray>
+        <TabControl Height="Auto" DockPanel.Dock="Top"  Name="tabControl1" FontFamily="Segoe UI Light" Background="#FFD6D6D6">
+            <TabItem Header="Working area" Name="Area" IsTabStop="False">
+                <DockPanel Name="TabDock">
+
+                    <Grid VerticalAlignment="Top" HorizontalAlignment="Left" 
+                        Width="{Binding ElementName=TabDock, Path=ActualWidth}"  
+                          Height="{Binding ElementName=TabDock, Path=ActualHeight}" Background="Black">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <ComboBox IsTabStop="False" Grid.Column="0" Grid.Row="0" Name="PathLeft" SelectedIndex="0"  IsEditable="True" ItemsSource="{Binding DriversEnumLeft}" IsReadOnly="False" IsEnabled="True" DropDownOpened="PathLeft_DropDownOpened" BorderBrush="#FFACACAC">
+
+                            <ComboBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Add to Favorite" Click="AddToFavoriteClickLeft"></MenuItem>
+                                    <MenuItem Header="Delete from Favorite" Click="DeleteFavLeft" ></MenuItem>
+                                </ContextMenu>
+                            </ComboBox.ContextMenu>
+                        </ComboBox>
+
+                        <TextBox Name="PathLeftEvent" Visibility="Hidden"  Text="{Binding ElementName=PathLeft,Path=Text}" TextChanged="PathLeftEvent_TextChanged"></TextBox>
+                        <ComboBox  IsTabStop="False" Name="PathRight" Grid.Row="0" Grid.Column="2" SelectedIndex="0" IsEditable="True" ItemsSource="{Binding DriversEnumRight}" IsReadOnly="False" IsEnabled="True"  DropDownOpened="PathRight_DropDownOpened">
+                            <ComboBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Add to Favorite" Click="AddToFavoriteClickRight"></MenuItem>
+                                    <MenuItem Header="Delete from Favorite" Click="DeleteFavRight" ></MenuItem>
+                                </ContextMenu>
+                            </ComboBox.ContextMenu>
+                        </ComboBox>
+                        <TextBox Name="PathRightEvent" Visibility="Hidden"  Text="{Binding ElementName=PathRight,Path=Text}" TextChanged="PathRightEvent_TextChanged"></TextBox>
+                        <ListView ItemsSource="{Binding FileDescriptionLeft}"  FontSize="10" FontFamily="Segoe UI Symbol" 
+                                  AllowDrop="True"
+                                  SelectionMode="Extended"  Name="LeftFiles" Grid.Row="1"  Grid.Column="0" 
+                                  MouseDoubleClick="LeftFiles_MouseDoubleClick" KeyDown="LeftFiles_KeyDown" 
+                                  GotFocus="LeftFiles_GotFocus" Background="White" Drop="LeftFiles_Drop" 
+                                  DragEnter="LeftFiles_DragEnter" PreviewMouseLeftButtonDown="LeftFiles_PreviewMouseLeftButtonDown" PreviewMouseMove="LeftFiles_PreviewMouseMove" MouseRightButtonUp="LeftFiles_MouseRightButtonUp">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="24" Header="Icon">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Image Source="{Binding FileIcon}"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="260" Header="Path" DisplayMemberBinding="{Binding FileName}"/>
+                                    <GridViewColumn Width="120"  Header="Size" DisplayMemberBinding="{Binding FileSize}"/>
+                                    <GridViewColumn Width="100"  Header="Type" DisplayMemberBinding="{Binding FileType}"/>
+                                    <GridViewColumn Width="100"  Header="Last write time" DisplayMemberBinding="{Binding LastChangeDate}"/>
+                                </GridView>
+
+                            </ListView.View>
+                        </ListView>
+
+                        <GridSplitter HorizontalAlignment="Right" 
+                  VerticalAlignment="Stretch" IsTabStop="False"
+                  Grid.Column="1" Grid.Row="2" ResizeBehavior="PreviousAndNext"
+                  Width="2" Background="#FFD6D6D6"/>
+                        <GridSplitter HorizontalAlignment="Right" 
+                  VerticalAlignment="Stretch" IsTabStop="False"
+                  Grid.Column="1"  ResizeBehavior="PreviousAndNext"
+                  Width="2" Background="#FFD6D6D6"/>
+                        <!-- <ListViewItem Background="LightSlateGray" Foreground="Orange"
+             FontFamily="Georgia" FontSize="14" FontWeight="Bold">
+                                    <StackPanel Orientation="Horizontal">
+                                <Image Source="/Navi;component/Images/add_4457.png" Height="30"></Image>
+                                <TextBlock Text="Mango Shake"></TextBlock>
+                                 </StackPanel>
+                            </ListViewItem> -->
+
+                        <ListView Name="RightFiles" ItemsSource="{Binding FileDescriptionRight}" FontSize="10" 
+                                  AllowDrop="True"
+                                  FontFamily="Segoe UI Symbol"  SelectionMode="Extended"  Grid.Row="1" Grid.Column="2" 
+                                  MouseDoubleClick="RightFiles_MouseDoubleClick" GotFocus="RightFiles_GotFocus"
+                                  KeyDown="RightFiles_KeyDown_1" Drop="RightFiles_Drop" PreviewMouseLeftButtonDown="RightFiles_PreviewMouseLeftButtonDown" PreviewMouseMove="RightFiles_PreviewMouseMove" MouseRightButtonUp="RightFiles_MouseRightButtonUp">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="24" Header="Icon">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Image Source="{Binding FileIcon}"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Path" Width="260" DisplayMemberBinding="{Binding FileName}"/>
+                                    <GridViewColumn Width="120"  Header="Size" DisplayMemberBinding="{Binding FileSize}"/>
+                                    <GridViewColumn Width="100"  Header="Type" DisplayMemberBinding="{Binding FileType}"/>
+                                    <GridViewColumn Width="100"  Header="Last write time" DisplayMemberBinding="{Binding LastChangeDate}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Progress Viewer" Name="TreeV" IsTabStop="False">
+                <ListView ItemsSource="{Binding FilesCopyQueue}"  FontSize="10" SelectionMode="Single"  Name="ProgressViewer" >
+                    <ListView.View>
+                        <GridView>
+                            <!--  <GridViewColumn Width="Auto" Header="Icon" />-->
+                            <GridViewColumn Width="220" Header="From" DisplayMemberBinding="{Binding FromDir}" />
+                            <GridViewColumn Width="220"  Header="To" DisplayMemberBinding="{Binding ToDir}"/>
+                            <GridViewColumn Width="120"  Header="Size | Type" DisplayMemberBinding="{Binding CurrentSize}"/>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <!--   <TabItem Header="Process Viewer" Name="ProcessV">
+            </TabItem> -->
+        </TabControl>
+    </DockPanel>
 </Window>
