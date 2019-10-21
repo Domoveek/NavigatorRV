@@ -71,6 +71,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Drivers.cs" />
+    <Compile Include="Model\FilesProcessor\CopyInform.cs" />
+    <Compile Include="Model\FilesProcessor\FileFinder.cs" />
+    <Compile Include="Model\FilesProcessor\FileFinderThread.cs" />
+    <Compile Include="Model\FilesProcessor\FileInformation.cs" />
+    <Compile Include="Model\FilesProcessor\FileMutex.cs" />
+    <Compile Include="Model\FilesProcessor\FileProcessor.cs" />
+    <Compile Include="Model\Settings.cs" />
+    <Compile Include="Model\WinAPI.cs" />
     <Compile Include="ShellContextMenuDll\ShellContextMenu.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -123,8 +132,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
