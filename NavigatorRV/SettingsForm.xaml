@@ -1,0 +1,10 @@
+﻿<Window x:Class="NavigatorRV.SettingsForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SettingsForm" Height="143.334" Width="300">
+    <DockPanel>
+        <CheckBox Name="AllDock" DockPanel.Dock="Top" Margin="20,10,0,0">Full screen</CheckBox>
+        <CheckBox Name="Icons" DockPanel.Dock="Top" Margin="20,10,0,0" IsChecked="True">Show files' Icons</CheckBox>
+        <Button Name="SetSaver" DockPanel.Dock="Bottom" Height="20" Width="100" Click="SetSaver_Click">Save</Button>
+    </DockPanel>
+</Window>

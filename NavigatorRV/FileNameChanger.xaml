@@ -1,0 +1,10 @@
+﻿<Window x:Class="NavigatorRV.FileNameChanger"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FileNameChanger" Height="154.444" Width="300">
+    <DockPanel>
+        <Label Name="PreviousName" DockPanel.Dock="Top" FontSize="12">Input new name:</Label>
+        <TextBox Name="NewName" Text="Input new name" FontSize="12" DockPanel.Dock="Top" Margin="20,0,20,0" KeyDown="NewName_KeyDown"></TextBox>
+        <Button Name="Accept" DockPanel.Dock="Top" Width="80" Height="24" FontSize="12" Click="Accept_Click">Accept</Button>
+    </DockPanel>
+</Window>

@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FileNameChanger.xaml.cs">
+      <DependentUpon>FileNameChanger.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Drivers.cs" />
     <Compile Include="Model\FilesProcessor\CopyInform.cs" />
     <Compile Include="Model\FilesProcessor\FileFinder.cs" />
@@ -80,7 +83,14 @@
     <Compile Include="Model\FilesProcessor\FileProcessor.cs" />
     <Compile Include="Model\Settings.cs" />
     <Compile Include="Model\WinAPI.cs" />
+    <Compile Include="SettingsForm.xaml.cs">
+      <DependentUpon>SettingsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShellContextMenuDll\ShellContextMenu.cs" />
+    <Page Include="FileNameChanger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,6 +103,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SettingsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
