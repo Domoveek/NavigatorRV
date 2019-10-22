@@ -52,6 +52,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -147,5 +148,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\1358479218_file_add.png" />
+    <Resource Include="Images\1358479304_file_edit.png" />
+    <Resource Include="Images\1358479444_file_delete.png" />
+    <Resource Include="Images\add_4457.png" />
+    <Resource Include="Images\copy_2118.png" />
+    <Resource Include="Images\delete_3654.png" />
+    <Resource Include="Images\folder.png" />
+    <Resource Include="Images\New File.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

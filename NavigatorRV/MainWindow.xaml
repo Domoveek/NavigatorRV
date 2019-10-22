@@ -1,4 +1,4 @@
-﻿<Window x:Class="Navi.MainWindow" 
+﻿<Window x:Class="NavigatorRV.MainWindow" 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -28,19 +28,19 @@
             <ToolBar Name="ActionsToolBar"  Height="26" Width ="{Binding ElementName=UpperTray, Path=ActualWidth}" Background="#FFD6D6D6" Margin="0,0,0.4,0">
 
                 <Button Name ="AddFile" Focusable="False" Click="AddFile_Click" ToolTip="Add new file">
-                    <Image  Source="/Navi;component/Images/1358479218_file_add.png"  />
+                    <Image  Source="/NavigatorRV;component/Images/1358479218_file_add.png"  />
                 </Button>
                 <Button Name="AddFolder" Focusable="False" Click="AddFolder_Click" ToolTip="Add new folder">
-                    <Image Name="FolderImage" Source="/Navi;component/Images/folder.png" />
+                    <Image Name="FolderImage" Source="/NavigatorRV;component/Images/folder.png" />
                 </Button>
                 <Button Name="RenameFile" Focusable="False"  ToolTip="Rename File" Click="RenameFile_Click">
-                    <Image Name="RenameFileImage" Source="/Navi;component/Images/1358479304_file_edit.png" />
+                    <Image Name="RenameFileImage" Source="/NavigatorRV;component/Images/1358479304_file_edit.png" />
                 </Button>
                 <Button Name="CopyFiles" Focusable="False" Click="CopyFiles_Click" ToolTip="Copy files" >
-                    <Image  Source="/Navi;component/Images/add_4457.png"  />
+                    <Image  Source="/NavigatorRV;component/Images/add_4457.png"  />
                 </Button>
                 <Button Name ="DeleteFile" Focusable="False" ToolTip="Delete files">
-                    <Image  Source="/Navi;component/Images/1358479444_file_delete.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="Delete selected files" />
+                    <Image  Source="/NavigatorRV;component/Images/1358479444_file_delete.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="Delete selected files" />
                 </Button>
 
 

@@ -18,7 +18,6 @@ using System.Threading;
 using NavigatorRV.Model;
 using System.IO;
 using System.Diagnostics;
-using NavigatorRV.ShellContextMenuDll;
 using System.Windows.Interop;
 
 namespace NavigatorRV
@@ -958,7 +957,7 @@ Enter - open
         private void LeftFiles_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
 
-            ShellContextMenu.ShellContextMenu scm = new ShellContextMenu.ShellContextMenu();
+            ShellContextMenu scm = new ShellContextMenu();
             List<FileInformation> items = new List<FileInformation>();
             foreach (var x in LeftFiles.SelectedItems)
             {
@@ -985,7 +984,7 @@ Enter - open
         private void RightFiles_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
 
-            ShellContextMenu.ShellContextMenu scm = new ShellContextMenu.ShellContextMenu();
+            ShellContextMenu scm = new ShellContextMenu();
             List<FileInformation> items = new List<FileInformation>();
             foreach (var x in RightFiles.SelectedItems)
             {

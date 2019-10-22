@@ -8,7 +8,7 @@ using System.IO;
 using System.Windows;
 using System.Security.Permissions;
 
-namespace NavigatorRV.ShellContextMenuDll
+namespace NavigatorRV
 {
     public class ShellContextMenu : NativeWindow
     {
@@ -120,7 +120,7 @@ namespace NavigatorRV.ShellContextMenuDll
         #endregion
 
         #region InvokeCommand
-        private void InvokeCommand(IContextMenu oContextMenu, uint nCmd, string strFolder, Point pointInvoke)
+        private void InvokeCommand(IContextMenu oContextMenu, uint nCmd, string strFolder, System.Drawing.Point pointInvoke)
         {
             CMINVOKECOMMANDINFOEX invoke = new CMINVOKECOMMANDINFOEX();
             invoke.cbSize = cbInvokeCommand;
@@ -421,7 +421,7 @@ namespace NavigatorRV.ShellContextMenuDll
         public void ShowContextMenu(IntPtr Handle, FileInfo[] files, int x, int y)
         {
             // Release all resources first.
-            Point pointScreen = new Point(x, y);
+            System.Drawing.Point pointScreen = new System.Drawing.Point(x, y);
             ReleaseAll();
             if (files.Length > 0)
                 _arrPIDLs = GetPIDLs(files);
@@ -436,7 +436,7 @@ namespace NavigatorRV.ShellContextMenuDll
         public void ShowContextMenu(IntPtr Handle, DirectoryInfo[] dirs, int x, int y)
         {
             // Release all resources first.
-            Point pointScreen = new Point(x, y);
+            System.Drawing.Point pointScreen = new System.Drawing.Point(x, y);
             ReleaseAll();
             _arrPIDLs = GetPIDLs(dirs);
             this.ShowContextMenu(Handle, pointScreen);
@@ -447,7 +447,7 @@ namespace NavigatorRV.ShellContextMenuDll
         /// </summary>
         /// <param name="arrFI">FileInfos (should all be in same directory)</param>
         /// <param name="pointScreen">Where to show the menu</param>
-        private void ShowContextMenu(IntPtr Handle, Point pointScreen)
+        private void ShowContextMenu(IntPtr Handle, System.Drawing.Point pointScreen)
         {
             IntPtr pMenu = IntPtr.Zero,
                 iContextMenuPtr = IntPtr.Zero,
