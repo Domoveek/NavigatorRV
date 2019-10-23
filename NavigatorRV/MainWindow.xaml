@@ -17,7 +17,7 @@
                 <MenuItem Header="_Copy"/>
                 <MenuItem Header="C_ut"/>
                 <MenuItem Header="_Delete"/>
-            </MenuItem>--> 
+            </MenuItem>-->
             <MenuItem Header="_About" IsTabStop="False" >
                 <MenuItem Header="_About program" Click="MenuItem_Click_1" />
                 <MenuItem Header="Hot_keys" Click="MenuItem_Click_4" />
@@ -25,7 +25,7 @@
             </MenuItem>
         </Menu>
         <ToolBarTray Name="UpperTray"  DockPanel.Dock="Top" Height="Auto" Background="#FFD6D6D6">
-            <ToolBar Name="ActionsToolBar"  Height="26" Width ="{Binding ElementName=UpperTray, Path=ActualWidth}" Background="#FFD6D6D6" Margin="0,0,0.4,0">
+            <ToolBar Name="ActionsToolBar"  Height="30" Width ="{Binding ElementName=UpperTray, Path=ActualWidth}" Background="#FFD6D6D6">
 
                 <Button Name ="AddFile" Focusable="False" Click="AddFile_Click" ToolTip="Add new file">
                     <Image  Source="/NavigatorRV;component/Images/1358479218_file_add.png"  />
@@ -33,6 +33,7 @@
                 <Button Name="AddFolder" Focusable="False" Click="AddFolder_Click" ToolTip="Add new folder">
                     <Image Name="FolderImage" Source="/NavigatorRV;component/Images/folder.png" />
                 </Button>
+                <Separator></Separator>
                 <Button Name="RenameFile" Focusable="False"  ToolTip="Rename File" Click="RenameFile_Click">
                     <Image Name="RenameFileImage" Source="/NavigatorRV;component/Images/1358479304_file_edit.png" />
                 </Button>
@@ -43,10 +44,27 @@
                     <Image  Source="/NavigatorRV;component/Images/1358479444_file_delete.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="Delete selected files" />
                 </Button>
                 <Separator></Separator>
-                <Button Name ="FtpConnect" Focusable="False" ToolTip="Connect to FTP server">
-                    <Image  Source="/NavigatorRV;component/Images/ftpconnection.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="Delete selected files" />
+                <!--TO****************************************************DO-->
+                <Button Name ="FtpConnect" Focusable="False" Click="FtpConnect_Click"  ToolTip="Connect to FTP server">
+                    <Image  Source="/NavigatorRV;component/Images/ftpconnection.png"  ToolTip="Connect to FTP server" />
+                </Button><!--complete-->
+                <Button Name ="ZipFile" Focusable="False" Click="ZipFile_Click" ToolTip="Archive file">
+                    <Image  Source="/NavigatorRV;component/Images/zipfile.png"  ToolTip="Archive file" />
                 </Button>
-
+                <Button Name ="UnzipFile" Focusable="False" ToolTip="Unzip file">
+                    <Image  Source="/NavigatorRV;component/Images/unzipfile.png"  ToolTip="Unzip file" />
+                </Button>
+                <Separator></Separator>
+                <Button Name ="OpenNotepad" Focusable="False" Click="OpenNotepad_Click" ToolTip="Open notepad">
+                    <Image  Source="/NavigatorRV;component/Images/createnote.png"  ToolTip="Open notepad" />
+                </Button><!--complete-->
+                <Button Name ="OpenCalculator" Focusable="False" Click="OpenCalculator_Click" ToolTip="Open calculator">
+                    <Image  Source="/NavigatorRV;component/Images/opencalculator.png"  ToolTip="Open calculator" />
+                </Button><!--complete-->
+                <Button Name ="ResetExplorer" Focusable="False" Click="ResetExplorer_Click" ToolTip="Open explorer">
+                    <Image  Source="/NavigatorRV;component/Images/resetexplorer.png" ToolTip="Open explorer" />
+                </Button><!--complete-->
+                <!--TO****************************************************DO-->
             </ToolBar>
         </ToolBarTray>
         <TabControl Height="Auto" DockPanel.Dock="Top"  Name="tabControl1" FontFamily="Segoe UI Light" Background="#FFD6D6D6">

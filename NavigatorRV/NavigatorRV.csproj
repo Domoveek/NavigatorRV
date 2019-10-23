@@ -168,5 +168,10 @@
     <Resource Include="Images\folder.png" />
     <Resource Include="Images\New File.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\createnote.png" />
+    <Resource Include="Images\opencalculator.png" />
+    <Resource Include="Images\resetexplorer.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
