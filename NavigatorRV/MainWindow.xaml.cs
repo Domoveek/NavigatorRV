@@ -959,6 +959,11 @@ Enter - open
             if (_LastFocusedLeft)
             {
                 if (LeftFiles.SelectedIndex == -1) return;
+                if (FileDescriptionLeft[LeftFiles.SelectedIndex].FileType != ".") 
+                { 
+                    MessageBox.Show("К сожалению, вы можете архивировать только папку");
+                    return; 
+                }
                 string zipPath = PathLeft.Text + FileDescriptionLeft[LeftFiles.SelectedIndex].FileName;
                 string extractPath = PathRight.Text + FileDescriptionLeft[LeftFiles.SelectedIndex].FileName + ".zip";
                 ZipFile.CreateFromDirectory(zipPath, extractPath);
@@ -966,6 +971,11 @@ Enter - open
             else
             {
                 if (RightFiles.SelectedIndex == -1) return;
+                if (FileDescriptionLeft[LeftFiles.SelectedIndex].FileType != ".")
+                {
+                    MessageBox.Show("К сожалению, вы можете архивировать только папку");
+                    return;
+                }
                 string zipPath = PathRight.Text + FileDescriptionLeft[RightFiles.SelectedIndex].FileName;
                 string extractPath = PathLeft.Text + FileDescriptionLeft[LeftFiles.SelectedIndex].FileName + ".zip";
                 ZipFile.CreateFromDirectory(zipPath, extractPath);
