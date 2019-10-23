@@ -21,7 +21,6 @@
             <MenuItem Header="_About" IsTabStop="False" >
                 <MenuItem Header="_About program" Click="MenuItem_Click_1" />
                 <MenuItem Header="Hot_keys" Click="MenuItem_Click_4" />
-                <MenuItem Header="A_bout author" Click="MenuItem_Click_2" />
             </MenuItem>
         </Menu>
         <ToolBarTray Name="UpperTray"  DockPanel.Dock="Top" Height="Auto" Background="#FFD6D6D6">
@@ -48,10 +47,10 @@
                 <Button Name ="FtpConnect" Focusable="False" Click="FtpConnect_Click"  ToolTip="Connect to FTP server">
                     <Image  Source="/NavigatorRV;component/Images/ftpconnection.png"  ToolTip="Connect to FTP server" />
                 </Button><!--complete-->
-                <Button Name ="ZipFile" Focusable="False" Click="ZipFile_Click" ToolTip="Archive file">
+                <Button Name ="ArchiveFile" Focusable="False" Click="ZipFile_Click" ToolTip="Archive file">
                     <Image  Source="/NavigatorRV;component/Images/zipfile.png"  ToolTip="Archive file" />
                 </Button>
-                <Button Name ="UnzipFile" Focusable="False" ToolTip="Unzip file">
+                <Button Name ="UnzipFile" Focusable="False" Click="UnzipFile_Click" ToolTip="Unzip file">
                     <Image  Source="/NavigatorRV;component/Images/unzipfile.png"  ToolTip="Unzip file" />
                 </Button>
                 <Separator></Separator>

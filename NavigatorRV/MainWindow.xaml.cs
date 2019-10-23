@@ -19,6 +19,7 @@ using NavigatorRV.Model;
 using System.IO;
 using System.Diagnostics;
 using System.Windows.Interop;
+using System.IO.Compression;
 
 namespace NavigatorRV
 {
@@ -632,16 +633,9 @@ namespace NavigatorRV
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(@"Navi program.
+            MessageBox.Show(@"NavigatorRV program.
 It's Simple file navigator.
 ");
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(@"Mostovoy Nikita.
-DKO-301
-http://xnim.ru");
         }
 
         #region Add\Rename Items methods
@@ -962,9 +956,21 @@ Enter - open
 
         private void ZipFile_Click(object sender, RoutedEventArgs e)
         {
-
+            if (_LastFocusedLeft)
+            {
+                if (LeftFiles.SelectedIndex == -1) return;
+                string zipPath = PathLeft.Text + FileDescriptionLeft[LeftFiles.SelectedIndex].FileName;
+                string extractPath = PathRight.Text + FileDescriptionLeft[LeftFiles.SelectedIndex].FileName + ".zip";
+                ZipFile.CreateFromDirectory(zipPath, extractPath);
+            }
+            else
+            {
+                if (RightFiles.SelectedIndex == -1) return;
+                string zipPath = PathRight.Text + FileDescriptionLeft[RightFiles.SelectedIndex].FileName;
+                string extractPath = PathLeft.Text + FileDescriptionLeft[LeftFiles.SelectedIndex].FileName + ".zip";
+                ZipFile.CreateFromDirectory(zipPath, extractPath);
+            }
         }
-
         private void OpenNotepad_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("notepad");
@@ -978,6 +984,24 @@ Enter - open
         private void ResetExplorer_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer");
+        }
+
+        private void UnzipFile_Click(object sender, RoutedEventArgs e)
+        {
+            if (_LastFocusedLeft)
+            {
+                if (LeftFiles.SelectedIndex == -1) return;
+                string zipPath = PathLeft.Text + FileDescriptionLeft[LeftFiles.SelectedIndex].FileName;
+                string extractPath = PathRight.Text;
+                ZipFile.ExtractToDirectory(zipPath, extractPath);
+            }
+            else
+            {
+                if (RightFiles.SelectedIndex == -1) return;
+                string zipPath = PathRight.Text + FileDescriptionLeft[RightFiles.SelectedIndex].FileName;
+                string extractPath = PathLeft.Text;
+                ZipFile.ExtractToDirectory(zipPath, extractPath);
+            }
         }
 
         //static void Main(string[] args)
