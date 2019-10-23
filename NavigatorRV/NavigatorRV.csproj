@@ -75,6 +75,12 @@
     <Compile Include="FileNameChanger.xaml.cs">
       <DependentUpon>FileNameChanger.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FtpConnectWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FtpConnectWindow.Designer.cs">
+      <DependentUpon>FtpConnectWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Drivers.cs" />
     <Compile Include="Model\FilesProcessor\CopyInform.cs" />
     <Compile Include="Model\FilesProcessor\FileFinder.cs" />
@@ -147,7 +153,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\ftpconnection.png" />
+    <Resource Include="Images\unzipfile.png" />
+    <Resource Include="Images\zipfile.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\1358479218_file_add.png" />
     <Resource Include="Images\1358479304_file_edit.png" />

@@ -1479,10 +1479,12 @@ namespace NavigatorRV
             // Yield to the next hook in the chain
             return CallNextHookEx(m_hhook, code, wParam, lParam);
         }
+
         // ************************************************************************
 
         // ************************************************************************
         // Install the hook
+        [Obsolete]
         public void Install()
         {
             m_hhook = SetWindowsHookEx(

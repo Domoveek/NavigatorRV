@@ -58,7 +58,7 @@ namespace NavigatorRV.Model
                     if ((System.IO.Directory.Exists(_fullFileName)))
                 {
                     BitmapImage Bi = null;
-                    Bi = new BitmapImage(new Uri(@"pack://application:,,,/Navi;component/Images/folder.png", UriKind.Absolute));
+                    Bi = new BitmapImage(new Uri(@"pack://application:,,,/NavigatorRV;component/Images/folder.png", UriKind.Absolute));
                     FileIcon = Bi;
                     FileIcon.Freeze();
 

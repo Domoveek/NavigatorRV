@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:sys="clr-namespace:System;assembly=mscorlib"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="Navi" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        Title="NavigatorRV" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="603" Width="1029"
         ShowInTaskbar="True" Closing="Window_Closing" Background="#FFD6D6D6">
 
@@ -13,11 +13,11 @@
                 <MenuItem Header="_Settings" Click="MenuItem_Click_3"/>
                 <MenuItem Header="_Exit" Click="MenuItem_Click" />
             </MenuItem>
-            <!-- <MenuItem Header="E_dit"  IsTabStop="False">
+            <!--<MenuItem Header="E_dit"  IsTabStop="False">
                 <MenuItem Header="_Copy"/>
                 <MenuItem Header="C_ut"/>
                 <MenuItem Header="_Delete"/>
-            </MenuItem> -->
+            </MenuItem>--> 
             <MenuItem Header="_About" IsTabStop="False" >
                 <MenuItem Header="_About program" Click="MenuItem_Click_1" />
                 <MenuItem Header="Hot_keys" Click="MenuItem_Click_4" />
@@ -37,12 +37,15 @@
                     <Image Name="RenameFileImage" Source="/NavigatorRV;component/Images/1358479304_file_edit.png" />
                 </Button>
                 <Button Name="CopyFiles" Focusable="False" Click="CopyFiles_Click" ToolTip="Copy files" >
-                    <Image  Source="/NavigatorRV;component/Images/add_4457.png"  />
+                    <Image  Source="/NavigatorRV;component/Images/copy_2118.png"  />
                 </Button>
                 <Button Name ="DeleteFile" Focusable="False" ToolTip="Delete files">
                     <Image  Source="/NavigatorRV;component/Images/1358479444_file_delete.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="Delete selected files" />
                 </Button>
-
+                <Separator></Separator>
+                <Button Name ="FtpConnect" Focusable="False" ToolTip="Connect to FTP server">
+                    <Image  Source="/NavigatorRV;component/Images/ftpconnection.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" ToolTip="Delete selected files" />
+                </Button>
 
             </ToolBar>
         </ToolBarTray>
